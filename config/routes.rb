@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
+
+  resources :users, only: [:show, :index]
+
   resources :videos
+
   get 'pages/about'
 
   get 'pages/contact'

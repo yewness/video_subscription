@@ -1,0 +1,27 @@
+<h3>List of All Users</h3>
+
+<% if !current_user.nil? %>
+	<% if current_user.has_role? :admin %>
+	 	<table>
+	        <thead>
+	          <tr>
+	              <th data-field="id">Id</th>
+	              <th data-field="email">Email</th>
+	          </tr>
+	        </thead>
+
+	        <% @users.each do |user| %>
+	        <tbody>
+	          <tr>
+	            <td><%= user.id %></td>
+	            <td><%= user.email %></td>
+	          </tr>
+	        </tbody>
+	        <% end %>
+	    </table>
+	<% else %>
+		Only admin can access.
+	<% end %>
+<% else %>
+	You must log in to access.
+<% end %>

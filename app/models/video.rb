@@ -1,4 +1,5 @@
 class Video < ActiveRecord::Base
+	resourcify
 
 	def next
 		Video.where("id > ?", id).first
