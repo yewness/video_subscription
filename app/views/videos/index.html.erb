@@ -2,8 +2,12 @@
 
 <h1>Listing Videos</h1>
 
-<%= link_to new_video_path, :class => 'btn-floating btn-large waves-effect waves-light red' do %>
+<% if !current_user.nil? %>
+  <% if current_user.has_role? :admin %>
+    <%= link_to new_video_path, :class => 'btn-floating btn-large waves-effect waves-light red' do %>
   <i class="mdi-content-add"></i>
+    <% end %>
+  <% end %>
 <% end %>
 
 <ul class="collapsible" data-collapsible ="accordion">
@@ -13,13 +17,21 @@
       <i class="mdi-av-my-library-books"></i>
       <%= link_to video.title, video %>
       <span class="right">
-        <%= link_to edit_video_path(video) do %>
-          <i class="mdi-content-create"></i>
-      <% end %>
-    <%= link_to video, method: :delete, date: {confirm: 'Are you sure?'} do %>
-        <i class="mdi-notification-event-busy"></i>
-      <% end %>
-      </span>
+      <%= link_to video_path(video) do %>
+              <i class="mdi-action-aspect-ratio"></i>
+            <% end %>
+
+        <% if !current_user.nil? %>
+        <% if current_user.has_role? :admin %>
+            <%= link_to edit_video_path(video) do %>
+              <i class="mdi-content-create"></i>
+            <% end %>
+            <%= link_to video, method: :delete, date: {confirm: 'Are you sure?'} do %>
+              <i class="mdi-notification-event-busy"></i>
+            <% end %>
+          </span>
+        <% end %>
+        <% end %>
     </div>
     <div class="collapsible-body"><p><%= video.description %> </p></div>
   </li>

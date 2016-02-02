@@ -1,27 +1,40 @@
-<h3>List of All Users</h3>
-
-<% if !current_user.nil? %>
-	<% if current_user.has_role? :admin %>
-	 	<table>
-	        <thead>
-	          <tr>
-	              <th data-field="id">Id</th>
-	              <th data-field="email">Email</th>
-	          </tr>
-	        </thead>
-
-	        <% @users.each do |user| %>
-	        <tbody>
-	          <tr>
-	            <td><%= user.id %></td>
-	            <td><%= user.email %></td>
-	          </tr>
-	        </tbody>
-	        <% end %>
-	    </table>
+<div ng-controller="mainCtrl">
+    <div class="row">
+        <div class="s10 offset-s1 col">
+			<h3>List of All Users</h3>
+	<% if !current_user.nil? %>
+		<% if current_user.has_role? :admin %>
+			<% @users.each do |user| %>
+            <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+                <li ng-repeat="u in users">
+                    <div class="collapsible-header blue white-text"  ng-class="($index==1) ? 'active' : ''">
+                        <%= user.id %>. <%= user.email %>
+                    </div>
+                    <div class="collapsible-body blue lighten-3">
+                        <div class="m12 col">
+                            <div class="card">
+                                <div class="card-content row">
+                                    <div class="s12 l3 col">
+                                        <img src="{{u.user.picture.medium}}" class="align-right circle">
+                                    </div>
+                                    <div class="s12 l9 col">
+                                        <h4><%= user.email %></h4>
+                                        <label>Email: </label><%= user.email %><br>
+                                        <label>Password: </label><%= user.encrypted_password %><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <% end %>
+        <% else %>
+			Only admin can access.
+		<% end %>
 	<% else %>
-		Only admin can access.
+		You must log in to access.
 	<% end %>
-<% else %>
-	You must log in to access.
-<% end %>
+        </div>
+    </div>
+</div>
