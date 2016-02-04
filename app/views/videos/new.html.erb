@@ -1,7 +1,11 @@
 <h3>New Video</h3>
 
-<div class="card">
-	<div class="card-content">
-		<%= render 'form' %>
-	</div>
-</div>
+<% if !current_user.nil? %>
+	<% if current_user.has_role? :admin %>
+		<div class="card">
+			<div class="card-content">
+				<%= render 'form' %>
+			</div>
+		</div>
+	<% end %>
+<% end %>

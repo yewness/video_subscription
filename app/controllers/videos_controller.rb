@@ -6,6 +6,16 @@ class VideosController < ApplicationController
   # GET /videos.json
   def index
     @videos = Video.all
+    # case @videos
+    # when @videos.user.level == 1
+    #   @videos = @videos.lower_primary
+    # when @videos.user.level == 2
+    #   @videos = @videos.upper_primary
+    # when @videos.user.level == 3
+    #   @videos = @videos.lower_secondary
+    # when @videos.user.level == 4
+    #   @videos = @videos.upper_secondary
+    # end
   end
 
   # GET /videos/1

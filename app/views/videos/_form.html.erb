@@ -11,15 +11,22 @@
     </div>
   <% end %>
 
+  <%= f.label :category_id, "Course Level" %><br />
+  <div class="input-field">
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, { prompt: "Choose a level" }, class: "browser-default" %>
+  </div>
+
   <div class="input-field">
     <%= f.text_field :link, placeholder: 'Link', length: '10' %>
   </div>
   <div class="input-field">
     <%= f.text_field :title, placeholder: 'Title', length: '20' %>
   </div>
+
   <div class="input-field">
     <%= f.text_area :description, placeholder: 'Description', length: '800', class: 'materialize-textarea' %>
   </div>
+  
   <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
   <a href="<%= videos_path %>" class="btn waves-effect waves-light" name="action">Back</a>
 <% end %>

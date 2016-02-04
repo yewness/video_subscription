@@ -1,7 +1,12 @@
 <h3>User Profile</h3>
 
+<% if user_signed_in? %>
 <p>
   <strong>Title:</strong>
   <%= @user.email %>
 </p>
 <%= link_to('Edit registration', edit_user_registration_path) %>
+
+<% else %>
+	<a class="btn" onclick="Materialize.toast('Please Sign In', 4000)">Please sign up before accessing the course material</a>
+<% end %>
