@@ -11,18 +11,18 @@ class Video < ActiveRecord::Base
 	end
 
 	def lower_primary
-		self.where(level: 1)
+		self.where(category_id: 1)
 	end
 
 	def upper_primary
-		self.where(level: 2)
+		self.where(category_id: 2)
 	end
 
 	def lower_secondary
-		self.where(level: 3)
+		self.where(category_id: 3)
 	end
 
 	def upper_secondary
-		self.where(level: 4)
+		self.where(category_id: 4)
 	end
 end

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_one :category
+  belongs_to :category
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

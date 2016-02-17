@@ -6,24 +6,55 @@ class VideosController < ApplicationController
   # GET /videos.json
   def index
     @videos = Video.all
-    # case @videos
-    # when @videos.user.level == 1
-    #   @videos = @videos.lower_primary
-    # when @videos.user.level == 2
-    #   @videos = @videos.upper_primary
-    # when @videos.user.level == 3
-    #   @videos = @videos.lower_secondary
-    # when @videos.user.level == 4
-    #   @videos = @videos.upper_secondary
-    # end
   end
 
   # GET /videos/1
   # GET /videos/1.json
   def show
-    @videos = Video.all
     @next_video = @video.next
     @prev_video = @video.prev
+
+    @user = current_user if @user.nil?
+    if !@user.nil?
+      case @user.category_id
+        when 1
+          @videos = Video.where(category_id: 1)
+          @videos1 = Video.where(category_id: 2)
+          @videos2 = Video.where(category_id: 3)
+        when 2
+          @videos = Video.where(category_id: 2)
+          @videos1 = Video.where(category_id: 1)
+          @videos2 = Video.where(category_id: 3)
+        when 3
+          @videos = Video.where(category_id: 3)
+          @videos1 = Video.where(category_id: 1)
+          @videos2 = Video.where(category_id: 2)
+        when 4
+          @videos = Video.where(category_id: 4)
+          @videos1 = Video.where(category_id: 5)
+          @videos2 = Video.where(category_id: 6)
+        when 5
+          @videos = Video.where(category_id: 5)
+          @videos1 = Video.where(category_id: 4)
+          @videos2 = Video.where(category_id: 6)
+        when 6
+          @videos = Video.where(category_id: 6)
+          @videos1 = Video.where(category_id: 4)
+          @videos2 = Video.where(category_id: 5)
+        when 7
+          @videos = Video.where(category_id: 7)
+          @videos1 = Video.where(category_id: 8)
+          @videos2 = Video.where(category_id: 9)
+        when 8
+          @videos = Video.where(category_id: 8)
+          @videos1 = Video.where(category_id: 7)
+          @videos2 = Video.where(category_id: 9)
+        when 9
+          @videos = Video.where(category_id: 9)
+          @videos1 = Video.where(category_id: 7)
+          @videos2 = Video.where(category_id: 8)
+      end
+    end
   end
 
   # GET /videos/new
