@@ -11,6 +11,7 @@
 <% end %>
 
 <ul class="collapsible" data-collapsible ="accordion">
+  <div class="collection-item"><%= @videos.first.category.name %></div>
   <% @videos.each do |video| %>
   <li>
     <div class="collapsible-header">
@@ -33,7 +34,62 @@
         <% end %>
         <% end %>
     </div>
-    <div class="collapsible-body"><p><%= video.description %> </p></div>
+  </li>
+  <% end %>
+</ul>
+
+<ul class="collapsible" data-collapsible ="accordion">
+  <div class="collection-item"><%= @videos1.first.category.name %></div>
+  <% @videos1.each do |video| %>
+  <li>
+    <div class="collapsible-header">
+      <i class="mdi-av-my-library-books"></i>
+      <%= link_to video.title, video %>
+      <span class="right">
+      <%= link_to video_path(video) do %>
+              <i class="mdi-action-aspect-ratio"></i>
+            <% end %>
+
+        <% if !current_user.nil? %>
+        <% if current_user.has_role? :admin %>
+            <%= link_to edit_video_path(video) do %>
+              <i class="mdi-content-create"></i>
+            <% end %>
+            <%= link_to video, method: :delete, date: {confirm: 'Are you sure?'} do %>
+              <i class="mdi-notification-event-busy"></i>
+            <% end %>
+          </span>
+        <% end %>
+        <% end %>
+    </div>
+  </li>
+  <% end %>
+</ul>
+
+<ul class="collapsible" data-collapsible ="accordion">
+  <div class="collection-item"><%= @videos2.first.category.name %></div>
+  <% @videos2.each do |video| %>
+  <li>
+    <div class="collapsible-header">
+      <i class="mdi-av-my-library-books"></i>
+      <%= link_to video.title, video %>
+      <span class="right">
+      <%= link_to video_path(video) do %>
+              <i class="mdi-action-aspect-ratio"></i>
+            <% end %>
+
+        <% if !current_user.nil? %>
+        <% if current_user.has_role? :admin %>
+            <%= link_to edit_video_path(video) do %>
+              <i class="mdi-content-create"></i>
+            <% end %>
+            <%= link_to video, method: :delete, date: {confirm: 'Are you sure?'} do %>
+              <i class="mdi-notification-event-busy"></i>
+            <% end %>
+          </span>
+        <% end %>
+        <% end %>
+    </div>
   </li>
   <% end %>
 </ul>

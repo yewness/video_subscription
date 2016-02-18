@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col m3">
 				<div class="collection">
-					<div class="collection-item">Standard 1</div>
+					<div class="collection-item"><%= @videos.first.category.name %></div>
 					<% @videos.each do |video| %>
 						<%= link_to video.title, video, :class => 'collection-item' %>
 					<% end %>
@@ -31,7 +31,7 @@
 		<div class="row">
 			<div class="col m3">
 				<div class="collection">
-					<div class="collection-item">Standard 2</div>
+					<div class="collection-item"><%= @videos1.first.category.name %></div>
 					<% @videos1.each do |video| %>
 						<%= link_to video.title, video, :class => 'collection-item' %>
 					<% end %>
@@ -39,7 +39,7 @@
 			</div>
 			<div class="col m3">
 				<div class="collection">
-					<div class="collection-item">Standard 3</div>
+					<div class="collection-item"><%= @videos2.first.category.name %></div>
 					<% @videos2.each do |video| %>
 						<%= link_to video.title, video, :class => 'collection-item' %>
 					<% end %>
