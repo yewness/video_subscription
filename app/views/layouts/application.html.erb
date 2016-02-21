@@ -14,13 +14,13 @@
 </head>
 <body>
 
-  <nav>
+  <nav class="white">
     <div class="nav-wrapper">
-      <a href="<%= root_path %>" class="brand-logo"><img src="http://mathvictory.com/images/math%20logo.png" style="width:150px;height:70px;"></a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a href="<%= root_path %>" class="brand-logo"><img src="http://mathvictory.com/images/math%20logo.png" style="width:150px;height:70px;top:10px"></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="<%= pages_about_path %>"><i class="mdi-action-perm-identity"></i></a></li>
-        <li><a class='dropdown-button' href="#" data-activates='dropdown1'><i class="mdi-action-view-list"></i></a></li>
+        <li><a href="<%= pages_about_path %>"><i class="mdi-action-perm-identity" style="color:black"></i></a></li>
+        <li><a class='dropdown-button' href="#" data-activates='dropdown1'><i class="mdi-action-view-list" style="color:black"></i></a></li>
           <ul id='dropdown1' class='dropdown-content'>
             <li class="divider"></li>
             <% if user_signed_in? %>
@@ -34,10 +34,10 @@
               </li>
             <% end %>
           </ul>
-        <li><a href="<%= users_path %>"><i class="mdi-action-supervisor_account"></i></a></li>
+        <li><a href="<%= users_path %>"><i class="mdi-action-supervisor_account" style="color:black"></i></a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="<%= pages_about_path %>"><i class="mdi-action-perm-identity"></i></a></li>
+        <li><a href="<%= pages_about_path %>"><i class="mdi-action-perm-identity" style="color:black"></i></a></li>
           <% if user_signed_in? %>
             <li><%= link_to('User Profile', user_path(current_user)) %></li>
             <li>
@@ -55,8 +55,7 @@
 
 <div class="row">
 	<div class="col m10 offset-m1">
-    
-		<%= yield %>
+		  <%= yield %>
 	</div>
 </div>
 

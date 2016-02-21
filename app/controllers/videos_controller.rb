@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_video, only: [:show, :edit, :update, :destroy]
   before_action :load_video, only: [:index, :show]
-
   # before_action :authenticate_user!
 
   # GET /videos
@@ -77,9 +77,6 @@ class VideosController < ApplicationController
 
     def load_video
       @user = current_user if @user.nil?
-        @videos = Video.where(category_id: 1)
-        @videos1 = Video.where(category_id: 2)
-        @videos2 = Video.where(category_id: 3)
         if !@user.nil?
           case @user.category_id
             when 1
