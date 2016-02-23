@@ -3,6 +3,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+<div class="col m6">
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -21,9 +22,30 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field col m6">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, :placeholder => "Eg. Jarrett"  %>
+    
+  </div>
+
+  <div class="field col m6">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, :placeholder => "Eg. Yew"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.phone_field :phone_number, :placeholder => "Eg. 012-2345678"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :area %><br />
+    <%= f.text_field :area, :placeholder => "Eg. Subang Jaya" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
-<% end %>
+</div>
 
-<%= render "users/shared/links" %>
+<% end %>

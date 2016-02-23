@@ -2,10 +2,26 @@
 
 <% if user_signed_in? %>
 <p>
-  <strong>Title:</strong>
+  <strong>Email:</strong>
   <%= @user.email %>
 </p>
-<%= link_to('Edit registration', edit_user_registration_path) %>
+
+<p>
+  <strong>Full Name:</strong>
+  <%= @user.first_name %> <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Phone Number:</strong>
+  <%= @user.phone_number %>
+</p>
+
+<p>
+  <strong>Living Area:</strong>
+  <%= @user.area %>
+</p>
+
+<%= link_to('Edit User Profile', edit_user_registration_path) %>
 
 <% else %>
 	<a class="btn" onclick="Materialize.toast('Please Sign In', 4000)">Please sign up before accessing the course material</a>

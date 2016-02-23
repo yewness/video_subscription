@@ -1,8 +1,8 @@
 <div ng-controller="mainCtrl">
     <div class="row">
+    <% if !current_user.nil? %>
         <div class="s10 offset-s1 col">
-			<h3>List of All Users</h3>
-	<% if !current_user.nil? %>
+		<h3>List of All Users</h3>
 		<% if current_user.has_role? :admin %>
 			<% @users.each do |user| %>
             <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
@@ -20,7 +20,11 @@
                                     <div class="s12 l9 col">
                                         <h4><%= user.email %></h4>
                                         <label>Email: </label><%= user.email %><br>
-                                        <label>Password: </label><%= user.encrypted_password %><br>
+                                        <label>Full Name: </label><%= user.first_name %> <%= user.last_name %><br>
+                                        <label>Phone Number</label><%= user.phone_number %><br>
+                                        <label>Living Area</label><%= user.area %><br>
+                                        <label>Course level: </label><%= user.category_id %>
+                                        <%= link_to('Click here to change it', edit_user_path(user)) %>
                                     </div>
                                 </div>
                             </div>
@@ -29,11 +33,11 @@
                 </li>
             </ul>
             <% end %>
-        <% else %>
-			Only admin can access.
+        <% else %><br><br> 
+			<a class="btn">Only admin can access it.</a>
 		<% end %>
-	<% else %>
-		You must log in to access.
+	<% else %><br><br>
+		<a class="btn">You must log in to access the material.</a>
 	<% end %>
         </div>
     </div>

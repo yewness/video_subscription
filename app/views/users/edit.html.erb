@@ -1,0 +1,43 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br><br><br>
+
+  <div class="field">
+    Email: <%= @user.email %>
+  </div><br>
+
+  <%if current_user.has_role? :admin %>
+    <label>Course Level</label>
+      <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a level" }, class: "browser-default" %>
+  <% end %><br>
+
+  <div class="field">
+  	Full Name: <%= @user.first_name %> <%= @user.first_name %>
+  </div><br>
+
+  <div class="field">
+  	Phone Number: <%= @user.phone_number %>
+  </div><br>
+
+  <div class="field">
+  	Living Area: <%= @user.area %>
+  </div><br>
+
+  <div class="row">
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+    <%= link_to "Back", :back %>
+  </div>
+<% end %>
+
